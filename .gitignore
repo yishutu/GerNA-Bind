@@ -1,0 +1,6 @@
+.venv
+Model/*.pth
+**/__pycache__/
+__pycache__/
+*.egg-info/
+uv.lock

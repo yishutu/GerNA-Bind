@@ -26,3 +26,10 @@ dependencies = [
     "scikit-learn==1.2.2",
     "prody==2.4.1"
 ]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.uv.extra-build-dependencies]
+torch-cluster = ["torch"]
+torch-scatter = ["torch"]
