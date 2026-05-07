@@ -18,6 +18,8 @@ dependencies = [
     "openmm==8.1.1",
     "torchdrug==0.2.1",
     "torch_geometric==2.4.0",
+    "torch_cluster==1.6.3",
+    "torch_scatter==2.1.2",
     "equiformer-pytorch",
     "edl_pytorch==0.0.2",
     "rdkit==2023.9.5",
@@ -30,6 +32,38 @@ dependencies = [
 [tool.setuptools]
 py-modules = []
 
-[tool.uv.extra-build-dependencies]
-torch-cluster = ["torch"]
-torch-scatter = ["torch"]
+[tool.uv.sources]
+torch = [
+  { index = "pytorch-cpu", marker = "sys_platform != 'linux'" },
+  { index = "pytorch-cu121", marker = "sys_platform == 'linux'" },
+]
+torch_cluster = [
+    { index = "pytorch-geometric-cpu", marker = "sys_platform != 'linux'" },
+    { index = "pytorch-geometric-cu121", marker = "sys_platform == 'linux'" },
+]
+torch_scatter = [
+    { index = "pytorch-geometric-cpu", marker = "sys_platform != 'linux'" },
+    { index = "pytorch-geometric-cu121", marker = "sys_platform == 'linux'" },
+]
+
+
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu121"
+url = "https://download.pytorch.org/whl/cu121"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-geometric-cu121"
+url = "https://data.pyg.org/whl/torch-2.1.0+cu121.html"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-geometric-cpu"
+url = "https://data.pyg.org/whl/torch-2.1.0+cpu.html"
+explicit = true
