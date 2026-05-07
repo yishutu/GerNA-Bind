@@ -62,8 +62,10 @@ explicit = true
 name = "pytorch-geometric-cu121"
 url = "https://data.pyg.org/whl/torch-2.1.0+cu121.html"
 explicit = true
+format = flat
 
 [[tool.uv.index]]
 name = "pytorch-geometric-cpu"
 url = "https://data.pyg.org/whl/torch-2.1.0+cpu.html"
 explicit = true
+format = flat
